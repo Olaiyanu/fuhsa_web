@@ -45,14 +45,22 @@ export default function Navbar({ isDashboard, activeTab, onTabChange, onLogout }
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 bg-brand-gold rounded-xl flex items-center justify-center p-1.5 shadow-lg group-hover:rotate-12 transition-transform">
-             {/* Simple Logo Placeholder */}
-             <div className="w-full h-full border-2 border-brand-navy rounded-sm flex items-center justify-center font-bold text-brand-navy text-xs">
-               FU
-             </div>
+          <div className="w-12 h-12 relative flex items-center justify-center">
+            <img 
+              src="/logo.png" 
+              alt="FUHSA Logo" 
+              className="w-full h-full object-contain relative z-10"
+              onError={(e) => {
+                e.currentTarget.style.display = 'none';
+                e.currentTarget.parentElement?.querySelector('.icon-fallback')?.classList.remove('hidden');
+              }}
+            />
+            <div className="icon-fallback hidden w-10 h-10 bg-brand-navy rounded-xl flex items-center justify-center p-1.5 shadow-lg group-hover:rotate-12 transition-transform">
+               <span className="font-bold text-brand-gold text-xs">FU</span>
+            </div>
           </div>
           <div className="flex flex-col">
-            <span className="font-bold text-lg leading-tight tracking-tight mt-0.5 text-brand-navy">FUHSA</span>
+            <span className="font-bold text-lg leading-tight tracking-tight mt-0.5 text-brand-navy uppercase">FUHSA</span>
             <span className="text-[10px] uppercase font-bold text-brand-gold tracking-[0.2em] leading-none">AZARE</span>
           </div>
         </Link>
@@ -147,12 +155,23 @@ export default function Navbar({ isDashboard, activeTab, onTabChange, onLogout }
               className="fixed top-0 right-0 bottom-0 w-[80%] max-w-sm bg-white z-[52] shadow-2xl p-8 flex flex-col"
             >
               <div className="flex items-center justify-between mb-12">
-                 <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-brand-gold rounded-xl flex items-center justify-center p-1.5">
-                       <span className="font-bold text-brand-navy text-xs">FU</span>
+                 <Link to="/" onClick={() => setIsOpen(false)} className="flex items-center gap-3">
+                    <div className="w-10 h-10 relative flex items-center justify-center">
+                      <img 
+                        src="/logo.png" 
+                        alt="FUHSA Logo" 
+                        className="w-full h-full object-contain relative z-10"
+                        onError={(e) => {
+                          e.currentTarget.style.display = 'none';
+                          e.currentTarget.parentElement?.querySelector('.mobile-icon-fallback')?.classList.remove('hidden');
+                        }}
+                      />
+                      <div className="mobile-icon-fallback hidden w-10 h-10 bg-brand-navy rounded-xl flex items-center justify-center p-1.5">
+                         <span className="font-bold text-brand-gold text-xs">FU</span>
+                      </div>
                     </div>
-                    <span className="font-bold text-brand-navy">FUHSA</span>
-                 </div>
+                    <span className="font-bold text-brand-navy uppercase">FUHSA</span>
+                 </Link>
                  <button onClick={() => setIsOpen(false)} className="p-2 text-brand-navy"><X /></button>
               </div>
 

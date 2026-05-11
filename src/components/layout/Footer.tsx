@@ -17,12 +17,23 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* About Column */}
           <div className="space-y-6">
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-brand-gold rounded-xl flex items-center justify-center p-2 shadow-xl">
-                 <span className="font-bold text-brand-navy text-sm">FU</span>
+            <div className="flex items-center gap-4">
+              <div className="w-16 h-16 relative flex items-center justify-center">
+                <img 
+                  src="/logo.png" 
+                  alt="FUHSA Logo" 
+                  className="w-full h-full object-contain relative z-10"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                    e.currentTarget.parentElement?.querySelector('.footer-icon-fallback')?.classList.remove('hidden');
+                  }}
+                />
+                <div className="footer-icon-fallback hidden w-12 h-12 bg-brand-gold rounded-xl flex items-center justify-center p-2 shadow-xl">
+                   <span className="font-bold text-brand-navy text-sm">FU</span>
+                </div>
               </div>
               <div className="flex flex-col">
-                <span className="font-bold text-xl leading-tight">FUHSA</span>
+                <span className="font-bold text-xl leading-tight uppercase">FUHSA</span>
                 <span className="text-[10px] uppercase font-semibold text-brand-gold tracking-[0.2em]">Azare, Bauchi State</span>
               </div>
             </div>

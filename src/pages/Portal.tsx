@@ -344,10 +344,21 @@ export default function Portal({ view, setView, activeTab, setActiveTab }: Porta
             >
               <div className="bg-white p-10 md:p-12 rounded-[3rem] shadow-2xl shadow-brand-navy/5 border border-slate-100 mt-12">
                 <div className="text-center mb-10">
-                  <div className="w-20 h-20 bg-brand-gold rounded-[2rem] flex items-center justify-center p-4 mx-auto mb-6 shadow-xl shadow-brand-gold/20">
-                    <span className="font-black text-brand-navy text-2xl">FU</span>
+                  <div className="w-20 h-20 relative mx-auto mb-6 flex items-center justify-center">
+                    <img 
+                      src="/logo.png" 
+                      alt="FUHSA Logo" 
+                      className="w-full h-full object-contain relative z-10"
+                      onError={(e) => {
+                        e.currentTarget.style.display = 'none';
+                        e.currentTarget.parentElement?.querySelector('.portal-icon-fallback')?.classList.remove('hidden');
+                      }}
+                    />
+                    <div className="portal-icon-fallback hidden w-20 h-20 bg-brand-gold rounded-[2rem] flex items-center justify-center p-4 shadow-xl shadow-brand-gold/20">
+                      <span className="font-black text-brand-navy text-2xl">FU</span>
+                    </div>
                   </div>
-                  <h1 className="text-3xl font-serif text-brand-navy">Welcome Back</h1>
+                  <h1 className="text-3xl font-serif text-brand-navy uppercase font-bold">FUHSA Portal</h1>
                   <p className="text-brand-navy/50 text-sm mt-2">Access your student portal workspace</p>
                 </div>
 
@@ -541,12 +552,23 @@ export default function Portal({ view, setView, activeTab, setActiveTab }: Porta
             >
               {/* Mobile Dashboard Nav Bar */}
               <div className="md:hidden flex items-center justify-between p-6 bg-brand-navy text-white sticky top-0 z-30">
-                 <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-brand-gold rounded-lg flex items-center justify-center p-1.5">
-                       <span className="font-bold text-brand-navy text-[10px]">FU</span>
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 relative flex items-center justify-center">
+                      <img 
+                        src="/logo.png" 
+                        alt="FUHSA Logo" 
+                        className="w-full h-full object-contain relative z-10"
+                        onError={(e) => {
+                          e.currentTarget.style.display = 'none';
+                          e.currentTarget.parentElement?.querySelector('.mobile-portal-icon-fallback')?.classList.remove('hidden');
+                        }}
+                      />
+                      <div className="mobile-portal-icon-fallback hidden w-8 h-8 bg-brand-gold rounded-lg flex items-center justify-center p-1.5 shadow-lg">
+                        <span className="font-bold text-brand-navy text-[10px]">FU</span>
+                      </div>
                     </div>
                     <span className="font-bold text-sm">{activeTab}</span>
-                 </div>
+                  </div>
                  <button 
                   onClick={() => setIsSidebarOpen(!isSidebarOpen)}
                   className="p-2 bg-white/10 rounded-lg"
@@ -569,10 +591,21 @@ export default function Portal({ view, setView, activeTab, setActiveTab }: Porta
                   >
                     <div className="flex items-center justify-between mb-16">
                       <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 bg-brand-gold rounded-xl flex items-center justify-center p-2">
-                            <span className="font-bold text-brand-navy text-xs">FU</span>
+                          <div className="w-10 h-10 relative flex items-center justify-center">
+                            <img 
+                              src="/logo.png" 
+                              alt="FUHSA Logo" 
+                              className="w-full h-full object-contain relative z-10"
+                              onError={(e) => {
+                                e.currentTarget.style.display = 'none';
+                                e.currentTarget.parentElement?.querySelector('.sidebar-icon-fallback')?.classList.remove('hidden');
+                              }}
+                            />
+                            <div className="sidebar-icon-fallback hidden w-10 h-10 bg-brand-gold rounded-xl flex items-center justify-center p-2 shadow-xl">
+                              <span className="font-bold text-brand-navy text-xs">FU</span>
+                            </div>
                           </div>
-                          <span className="font-bold text-lg">My Portal</span>
+                          <span className="font-bold text-lg uppercase">FUHSA</span>
                       </div>
                       <button onClick={() => setIsSidebarOpen(false)} className="md:hidden p-2 text-white/50"><X size={20} /></button>
                     </div>
