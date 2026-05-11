@@ -62,6 +62,17 @@ export default function Home() {
     <div className="relative">
       {/* Hero Section */}
       <section className="relative min-h-[100vh] flex items-center justify-center pt-24 overflow-hidden bg-brand-navy">
+        {/* Background Image & Overlay */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://images.unsplash.com/photo-1576091160550-217359f42f8c?auto=format&fit=crop&q=80&w=2000" 
+            alt="Medical Research" 
+            className="w-full h-full object-cover opacity-20 scale-105 animate-pulse-slow"
+            referrerPolicy="no-referrer"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-brand-navy via-brand-navy/60 to-brand-navy" />
+        </div>
+
         {/* Floating Medical Icons Background */}
         <div className="absolute inset-0 z-0 opacity-10">
            <motion.div animate={{ y: [-20, 20, -20], x: [-10, 10, -10] }} transition={{ duration: 15, repeat: Infinity }} className="absolute top-[20%] left-[10%] text-brand-gold"><Dna size={80} /></motion.div>
@@ -87,15 +98,15 @@ export default function Home() {
              initial={{ opacity: 0, y: 30 }}
              animate={{ opacity: 1, y: 0 }}
              transition={{ delay: 0.2 }}
-             className="text-4xl md:text-7xl font-serif text-white leading-[1.1] mb-6 text-balance"
+             className="text-3xl sm:text-4xl md:text-7xl font-serif text-white leading-[1.1] mb-6 text-balance"
           >
             Empowering the Next Generation of <span className="text-brand-gold italic">Health Leaders</span>
           </motion.h1>
 
-          <div className="h-12 flex justify-center items-center mb-12">
-            <p className="text-xl md:text-3xl text-white/70 font-light tracking-wide">
+          <div className="min-h-[4.5rem] md:min-h-[4rem] flex justify-center items-center mb-8 md:mb-12">
+            <p className="text-lg sm:text-xl md:text-3xl text-white/70 font-light tracking-wide max-w-2xl mx-auto">
               {displayText}
-              <span className="w-[2px] h-8 bg-brand-gold ml-1 inline-block animate-pulse align-middle" />
+              <span className="w-[2px] h-6 md:h-8 bg-brand-gold ml-1 inline-block animate-pulse align-middle" />
             </p>
           </div>
 
@@ -190,7 +201,7 @@ export default function Home() {
 
         {/* Stats Grid */}
         <div className="mt-32 grid grid-cols-2 md:grid-cols-4 gap-12 border-y border-slate-100 py-16">
-          <StatsCounter value={100} suffix="%" title="Specialized Focus" />
+          <StatsCounter value={98} suffix="%" title="Graduate Success" />
           <StatsCounter value={50} suffix="+" title="Research Papers" />
           <StatsCounter value={5} title="Academic Depts" />
           <StatsCounter value={1000} suffix="+" title="Active Students" />

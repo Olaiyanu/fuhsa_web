@@ -55,8 +55,11 @@ export default function Navbar({ isDashboard, activeTab, onTabChange, onLogout }
              </div>
           </div>
           <div className="flex flex-col">
-            <span className="font-bold text-lg leading-tight tracking-tight text-brand-navy">FUHSA</span>
-            <span className="text-[10px] uppercase font-semibold text-brand-gold tracking-widest leading-none">AZARE</span>
+            <span className={cn(
+              "font-bold text-lg leading-tight tracking-tight mt-0.5",
+              (isScrolled || isDashboard) ? "text-brand-navy" : "text-white"
+            )}>FUHSA</span>
+            <span className="text-[10px] uppercase font-bold text-brand-gold tracking-[0.2em] leading-none">AZARE</span>
           </div>
         </Link>
 
@@ -74,7 +77,7 @@ export default function Navbar({ isDashboard, activeTab, onTabChange, onLogout }
                       ? 'text-brand-gold' 
                       : isScrolled 
                         ? 'text-brand-navy hover:text-brand-gold' 
-                        : 'text-brand-navy hover:text-brand-gold drop-shadow-sm'
+                        : 'text-white hover:text-brand-gold drop-shadow-sm'
                   )}
                 >
                   {link.name}
@@ -126,10 +129,13 @@ export default function Navbar({ isDashboard, activeTab, onTabChange, onLogout }
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden p-2 text-brand-navy"
+          className={cn(
+            "md:hidden p-2 rounded-lg transition-colors",
+            (isScrolled || isDashboard) ? "text-brand-navy" : "text-white"
+          )}
           onClick={() => setIsOpen(!isOpen)}
         >
-          {isOpen ? <X /> : <Menu />}
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
