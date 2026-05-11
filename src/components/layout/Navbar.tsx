@@ -41,10 +41,7 @@ export default function Navbar({ isDashboard, activeTab, onTabChange, onLogout }
 
   return (
     <nav
-      className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 md:px-8 py-4',
-        (isScrolled || isDashboard) ? 'bg-white/80 backdrop-blur-md shadow-sm border-b border-white/20' : 'bg-transparent'
-      )}
+      className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md border-b border-slate-100 px-4 md:px-8 py-4"
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3 group">
@@ -55,10 +52,7 @@ export default function Navbar({ isDashboard, activeTab, onTabChange, onLogout }
              </div>
           </div>
           <div className="flex flex-col">
-            <span className={cn(
-              "font-bold text-lg leading-tight tracking-tight mt-0.5",
-              (isScrolled || isDashboard) ? "text-brand-navy" : "text-white"
-            )}>FUHSA</span>
+            <span className="font-bold text-lg leading-tight tracking-tight mt-0.5 text-brand-navy">FUHSA</span>
             <span className="text-[10px] uppercase font-bold text-brand-gold tracking-[0.2em] leading-none">AZARE</span>
           </div>
         </Link>
@@ -75,9 +69,7 @@ export default function Navbar({ isDashboard, activeTab, onTabChange, onLogout }
                     'text-sm font-bold tracking-tight transition-all relative py-1',
                     location.pathname === link.path 
                       ? 'text-brand-gold' 
-                      : isScrolled 
-                        ? 'text-brand-navy hover:text-brand-gold' 
-                        : 'text-white hover:text-brand-gold drop-shadow-sm'
+                      : 'text-brand-navy hover:text-brand-gold'
                   )}
                 >
                   {link.name}
@@ -129,10 +121,7 @@ export default function Navbar({ isDashboard, activeTab, onTabChange, onLogout }
 
         {/* Mobile Menu Button */}
         <button
-          className={cn(
-            "md:hidden p-2 rounded-lg transition-colors",
-            (isScrolled || isDashboard) ? "text-brand-navy" : "text-white"
-          )}
+          className="md:hidden p-2 rounded-lg transition-colors text-brand-navy"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}

@@ -62,11 +62,17 @@ export default function Footer() {
           <div>
             <h4 className="font-bold text-lg mb-6 border-b border-brand-gold/30 pb-2 inline-block">Departments</h4>
             <ul className="space-y-4">
-              {['Medicine & Surgery', 'Nursing Sciences', 'Public Health', 'Medical Laboratory Science', 'Dentistry'].map((dept) => (
-                <li key={dept}>
-                  <Link to="#" className="text-white/60 hover:text-brand-gold text-sm flex items-center gap-2 group">
+              {[
+                { name: 'Medicine & Surgery', id: 'medicine-surgery' },
+                { name: 'Nursing Sciences', id: 'nursing-sciences' },
+                { name: 'Public Health', id: 'public-health' },
+                { name: 'Medical Lab Science', id: 'medical-lab-science' },
+                { name: 'Dentistry', id: 'dentistry' }
+              ].map((dept) => (
+                <li key={dept.id}>
+                  <Link to={`/academics/${dept.id}`} className="text-white/60 hover:text-brand-gold text-sm flex items-center gap-2 group">
                     <ExternalLink size={14} className="opacity-40 group-hover:opacity-100 transition-opacity" />
-                    {dept}
+                    {dept.name}
                   </Link>
                 </li>
               ))}

@@ -17,15 +17,7 @@ import {
 import { Link } from 'react-router-dom';
 import { cn } from '@/src/lib/utils';
 import ScrollReveal from '@/src/components/ScrollReveal';
-
-const programs = [
-  { id: 1, name: "Medicine & Surgery", duration: "6 Years", category: "Clinical Sciences", desc: "Our flagship program designed to produce highly skilled medical doctors who are leaders in healthcare delivery and research.", icon: Stethoscope, degrees: "MBBS" },
-  { id: 2, name: "Nursing Sciences", duration: "5 Years", category: "Allied Health", desc: "Comprehensive nursing education focusing on clinical competence, community nursing, and professional medical ethics.", icon: HeartPulse, degrees: "B.N.Sc" },
-  { id: 3, name: "Public Health", duration: "4 Years", category: "Allied Health", desc: "Study the science of protecting and improving the health of communities through education, policy making and research.", icon: Users, degrees: "B.Sc" },
-  { id: 4, name: "Medical Laboratory Science", duration: "5 Years", category: "Allied Health", desc: "Expert training in laboratory diagnostics, hematology, and biochemical research essential for modern medicine.", icon: Microscope, degrees: "B.MLS" },
-  { id: 5, name: "Dentistry", duration: "6 Years", category: "Clinical Sciences", desc: "Specialized training in oral health, dental surgery, and periodontics with state-of-the-art simulation labs.", icon: Activity, degrees: "BDS" },
-  { id: 6, name: "Human Anatomy", duration: "4 Years", category: "Basic Medical", desc: "Explore the structural complexities of the human body, providing a foundation for clinical and biological sciences.", icon: Layers, degrees: "B.Sc" },
-];
+import { programs } from '../constants/programs';
 
 const categories = ["All Programs", "Clinical Sciences", "Allied Health", "Basic Medical"];
 
@@ -128,7 +120,9 @@ export default function Academics() {
                           <span className="text-[10px] text-brand-navy/40 font-bold uppercase tracking-widest">{program.category}</span>
                        </div>
                        
-                       <h3 className="text-2xl font-bold text-brand-navy mb-4 group-hover:text-brand-gold transition-colors leading-tight">{program.name}</h3>
+                       <h3 className="text-2xl font-bold text-brand-navy mb-4 group-hover:text-brand-gold transition-colors leading-tight">
+                          <Link to={`/academics/${program.id}`}>{program.name}</Link>
+                       </h3>
                        <p className="text-brand-navy/60 text-sm leading-relaxed mb-10 line-clamp-3">
                          {program.desc}
                        </p>
@@ -139,14 +133,14 @@ export default function Academics() {
                           <Clock size={16} className="text-brand-gold" />
                           <span className="text-xs font-bold">{program.duration}</span>
                        </div>
-                       <button className="bg-brand-navy/5 p-3 rounded-xl text-brand-navy group-hover:bg-brand-gold group-hover:text-white transition-all active:scale-90">
+                       <Link to={`/academics/${program.id}`} className="bg-brand-navy/5 p-3 rounded-xl text-brand-navy group-hover:bg-brand-gold group-hover:text-white transition-all active:scale-90">
                           <ChevronRight size={20} />
-                       </button>
+                       </Link>
                     </div>
                     
                     <div className="absolute bottom-10 right-20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                       <Link to="#" className="text-[10px] font-black uppercase text-brand-gold flex items-center gap-1">
-                          View Curriculum <BookOpen size={10} />
+                       <Link to={`/academics/${program.id}`} className="text-[10px] font-black uppercase text-brand-gold flex items-center gap-1">
+                          Learn More <ChevronRight size={10} />
                        </Link>
                     </div>
                  </motion.div>

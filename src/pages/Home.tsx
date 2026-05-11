@@ -20,6 +20,7 @@ import { Link } from 'react-router-dom';
 import ScrollReveal from '@/src/components/ScrollReveal';
 import StatsCounter from '@/src/components/StatsCounter';
 import { cn } from '@/src/lib/utils';
+import { programs } from '../constants/programs';
 
 const typewriterWords = [
   "Excellence in Health Education",
@@ -217,25 +218,22 @@ export default function Home() {
           </ScrollReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { title: "Medicine & Surgery", desc: "6-year clinical program leads to MBBS degree.", icon: Stethoscope, tag: "MBBS" },
-              { title: "Nursing Sciences", desc: "Expert training in clinical nursing care and research.", icon: HeartPulse, tag: "B.N.Sc" },
-              { title: "Public Health", desc: "Fostering community health and epidemiological research.", icon: Users, tag: "B.Sc" },
-              { title: "Medical Lab Science", desc: "Deep dive into diagnostic medical laboratory sciences.", icon: Microscope, tag: "B.MLS" }
-            ].map((dept, index) => (
-              <ScrollReveal delay={index * 0.1} key={dept.title} className="group cursor-pointer">
-                <div className="h-full bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-brand-navy/5 transition-all relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-24 h-24 bg-brand-gold/5 rounded-bl-[4rem] group-hover:bg-brand-gold/10 transition-colors" />
-                  <div className="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center text-brand-navy mb-8 group-hover:bg-brand-gold group-hover:text-white transition-all duration-500 group-hover:rotate-6">
-                    <dept.icon size={28} />
+            {programs.slice(0, 4).map((dept, index) => (
+              <ScrollReveal delay={index * 0.1} key={dept.id} className="group cursor-pointer">
+                <Link to={`/academics/${dept.id}`} className="block h-full">
+                  <div className="h-full bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-brand-navy/5 transition-all relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-brand-gold/5 rounded-bl-[4rem] group-hover:bg-brand-gold/10 transition-colors" />
+                    <div className="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center text-brand-navy mb-8 group-hover:bg-brand-gold group-hover:text-white transition-all duration-500 group-hover:rotate-6">
+                      <dept.icon size={28} />
+                    </div>
+                    <div className="inline-block px-2 py-0.5 bg-brand-navy/5 text-brand-navy text-[10px] font-bold rounded mb-4">{dept.degrees}</div>
+                    <h3 className="text-xl font-bold text-brand-navy mb-3">{dept.name}</h3>
+                    <p className="text-brand-navy/60 text-sm leading-relaxed mb-6 line-clamp-2">{dept.desc}</p>
+                    <span className="flex items-center gap-2 text-brand-gold font-bold text-sm group-hover:gap-3 transition-all">
+                      Learn More <ChevronRight size={16} />
+                    </span>
                   </div>
-                  <div className="inline-block px-2 py-0.5 bg-brand-navy/5 text-brand-navy text-[10px] font-bold rounded mb-4">{dept.tag}</div>
-                  <h3 className="text-xl font-bold text-brand-navy mb-3">{dept.title}</h3>
-                  <p className="text-brand-navy/60 text-sm leading-relaxed mb-6">{dept.desc}</p>
-                  <button className="flex items-center gap-2 text-brand-gold font-bold text-sm group-hover:gap-3 transition-all">
-                    Learn More <ChevronRight size={16} />
-                  </button>
-                </div>
+                </Link>
               </ScrollReveal>
             ))}
           </div>
@@ -243,9 +241,9 @@ export default function Home() {
           <div className="mt-16 text-center">
              <Link 
               to="/academics" 
-              className="inline-flex items-center gap-3 font-bold text-brand-navy hover:text-brand-gold transition-colors pb-1 border-b-2 border-brand-navy hover:border-brand-gold"
+              className="inline-flex items-center gap-3 group px-8 py-4 bg-brand-navy text-white rounded-2xl font-bold hover:bg-brand-gold hover:text-brand-navy transition-all shadow-xl shadow-brand-navy/5"
              >
-               View All Departments <ArrowRight size={18} />
+               View All Departments <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
              </Link>
           </div>
         </div>

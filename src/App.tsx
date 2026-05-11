@@ -17,6 +17,7 @@ import Home from './pages/Home';
 import Admissions from './pages/Admissions';
 import Academics from './pages/Academics';
 import Portal from './pages/Portal';
+import ProgramDetail from './pages/ProgramDetail';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -66,6 +67,7 @@ function MainApp() {
               <Route path="/" element={<Home />} />
               <Route path="/admission" element={<Admissions />} />
               <Route path="/academics" element={<Academics />} />
+              <Route path="/academics/:programId" element={<ProgramDetail />} />
               <Route path="/research" element={<Home />} /> {/* For now, research is part of home */}
               <Route path="/portal" element={
                 <Portal 
